@@ -42,7 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ConsoleWrapper.cs" />
+    <Compile Include="Helpers\IConsoleWrapper.cs" />
     <Compile Include="JobLogger.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="LoggerSources.cs" />
+    <Compile Include="LogSourcesMapper.cs" />
+    <Compile Include="LogSources\ConsoleLogger.cs" />
+    <Compile Include="LogType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
