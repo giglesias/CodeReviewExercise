@@ -14,9 +14,9 @@
 
         protected virtual void LogIfCorresponds(string message, LogType type, Action<string> logAction)
         {
-            if (!string.IsNullOrWhiteSpace(message.Trim()) && this.LogVerbosity >= type)
+            if (!string.IsNullOrWhiteSpace(message) && this.LogVerbosity >= type)
             {
-                logAction(message);
+                logAction(message.Trim());
             }
         }
     }
