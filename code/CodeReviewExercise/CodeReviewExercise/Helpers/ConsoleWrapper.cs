@@ -23,5 +23,10 @@
         {
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        public void ResetColor()
+        {
+            Console.ResetColor();
+        }
     }
 }

@@ -9,5 +9,7 @@
         void SetWarningForegroundColor();
 
         void SetMessageForegroundColor();
+
+        void ResetColor();
     }
 }

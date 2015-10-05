@@ -24,6 +24,7 @@
             {
                 this.consoleWrapper.SetErrorForegroundColor();
                 this.consoleWrapper.WriteLine("{0} {1}", DateTime.Now.ToShortDateString(), msg);
+                this.consoleWrapper.ResetColor();
             });
         }
 
@@ -33,6 +34,7 @@
             {
                 this.consoleWrapper.SetWarningForegroundColor();
                 this.consoleWrapper.WriteLine("{0} {1}", DateTime.Now.ToShortDateString(), msg);
+                this.consoleWrapper.ResetColor();
             });
         }
 
@@ -42,6 +44,7 @@
             {
                 this.consoleWrapper.SetMessageForegroundColor();
                 this.consoleWrapper.WriteLine("{0} {1}", DateTime.Now.ToShortDateString(), msg);
+                this.consoleWrapper.ResetColor();
             });
         }
     }
