@@ -1,6 +1,6 @@
 # Code Review Exercise #
 
-This repository includes a C# console application that showcases the refactor needed to improve a logger implementation code snippet from an exercise. It also includes a unit test project with tests for the main business logic. The detailed feedback is included in [this document](./feedback/Feedback.md).
+This repository includes a C# console application that showcases the refactor needed to improve a logger implementation code snippet from the _Interview Code Review.pdf_ exercise statement, which can be found in this folder. It also includes a unit test project with tests for the main business logic. The detailed feedback is included in [this document](./feedback/Feedback.md).
 
 
 ### Application configuration ###
