@@ -6,6 +6,9 @@
 
     public class Program
     {
+        private static string message;
+        private static LogType type;
+
         public static void Main(string[] args)
         {
             if (!ValidateConsoleParameters(args))
@@ -19,14 +22,26 @@
                 Environment.Exit(0);
             }
 
-            var message = args[0];
-            var type = (LogType)Enum.Parse(typeof(LogType), args[1]);
+            LogType logVerbosity;
+            if (!Enum.TryParse(ConfigurationManager.AppSettings["LogVerbosity"], true, out logVerbosity))
+            {
+                Console.WriteLine("Invalid LogVerbosity value in configuration file. Exiting...");
+                Console.ReadKey();
+                Environment.Exit(1);
+            }
 
             var logSourcesSetting = ConfigurationManager.AppSettings["LogSources"];
+
+            if (string.IsNullOrWhiteSpace(logSourcesSetting))
+            {
+                Console.WriteLine("No loggers were found in configuration file. Exiting...");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
             var logSources = logSourcesSetting.Split(',');
             Console.WriteLine("The following loggers were found in App.config: {0}", logSourcesSetting);
-            var logVerbosity = (LogType)Enum.Parse(typeof(LogType), ConfigurationManager.AppSettings["LogVerbosity"]);
-
+            
             foreach (var logSource in logSources)
             {
                 try
@@ -62,8 +77,15 @@
 
         private static bool ValidateConsoleParameters(string[] args)
         {
-            int num;
-            return args.Count() == 2 && int.TryParse(args[1], out num);
+            LogType logType;
+            if (args.Count() != 2 || !Enum.TryParse(args[1], out logType))
+            {
+                return false;
+            }
+
+            message = args[0];
+            type = logType;
+            return true;
         }
     }
 }
