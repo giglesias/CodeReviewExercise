@@ -1,6 +1,6 @@
 # Feedback and findings for Code Review exercise #
 
-This document describes all the feedback encountered in the provided code snippet related to logging messages to different sources.
+This document describes all the feedback for the the provided code snippet related to logging messages to different sources.
 
 
 ## Compilation errors ##
@@ -9,7 +9,7 @@ The code snippet didn't compile in the first place. After adding the **JobLogger
 
 ![compilation-errors](./images/compilation-errors.png)
 
-The **LogMessage** method cannot receive two parameters with the same name but different type. In order to fix this, we renamed the _message_ bool parameter to _shouldLogMessage_ along with the usages along the method. To keep this convention, we also renamed both the _warning_ and _error_ bool parameters to _shouldLogWarning_ and _shouldLogError_ correspondingly. After this update, the method's contract looks as the following one:
+The **LogMessage** method cannot receive two parameters with the same name but different type. In order to fix this, we renamed the _message_ bool parameter to _shouldLogMessage_ along with the usages throughout the method. To keep this convention, we also renamed both the _warning_ and _error_ bool parameters to _shouldLogWarning_ and _shouldLogError_ correspondingly. After this update, the method's contract looks as the following one:
 
 ```
 public static void LogMessage(string message, bool shouldLogMessage, bool shouldLogWarning, bool shouldLogError)
@@ -37,15 +37,15 @@ After these changes, the code built successfully.
 
 ## Refactor ##
 
-The code snippet includes logic to log messages to different sources and also to check if the messages should be logged or not based on the message's verbosity in a single method, which makes it difficult to maintain and extend if we want to log to extra sources in a near future.
+The code snippet includes logic to log messages to different sources and also to check if the messages should be logged or not based on the message's verbosity; but all of this is done within a single method in a single class, which makes it difficult to maintain and extend if we want to log to extra sources in a near future.
  
 The proposed refactor includes creating a base class that exposes methods to log each type of message (error, warning or message) and creating different classes for each source by extending the base class. The logic to check whether a message should be logged or not will be included in the base class, as it applies for each source and each operation.
 
-In addition, we propose creating wrappers to interact with the System.Console and System.IO.File classes to simplify the testability of the Console and Text File loggers. We also propose using Entity Framework for the SQL Database logger, as it's an already proven and working ORM that really simplifies the interaction with a SQL database compared to manually establishing the connection and executing queries, which can also lead to security issues. In this occasion, we'll use a code-first approach.
+In addition, we propose creating wrappers to interact with the System.Console and System.IO.File classes to simplify the testing of the Console and Text File loggers. We also propose using Entity Framework for the SQL Database logger, as it's an already proven and working ORM that really simplifies the interaction with a SQL database compared to manually establishing the connection and executing queries, which can also lead to security issues. In this occasion, we'll use a code-first approach.
 
 Regarding configuration, the different sources to use and the general verbosity to use thoughout the application will be provided as app settings in the App.config file.
 
-The refactor and unit tests are included in a Console application [here](../code/CodeReviewExercise) and the instructions to configure it can be found [here](../README.md).
+The refactor and unit tests are included in a C# Console application [here](../code/CodeReviewExercise), and the instructions to configure it can be found [here](../README.md).
 
 ### Refactor Details ###
 
