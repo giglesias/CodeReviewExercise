@@ -19,19 +19,19 @@
             this.logsRepository = logsRepository;
         }
 
-        public override void LogError(string message)
+        public override string LogError(string message)
         {
-            this.LogIfCorresponds(message, LogType.Error, (string msg) => this.SaveMessage(msg, LogType.Error));
+            return this.LogIfCorresponds(message, LogType.Error, (string msg) => this.SaveMessage(msg, LogType.Error));
         }
 
-        public override void LogWarning(string message)
+        public override string LogWarning(string message)
         {
-            this.LogIfCorresponds(message, LogType.Warning, (string msg) => this.SaveMessage(msg, LogType.Warning));
+            return this.LogIfCorresponds(message, LogType.Warning, (string msg) => this.SaveMessage(msg, LogType.Warning));
         }
 
-        public override void LogMessage(string message)
+        public override string LogMessage(string message)
         {
-            this.LogIfCorresponds(message, LogType.Message, (string msg) => this.SaveMessage(msg, LogType.Message));
+            return this.LogIfCorresponds(message, LogType.Message, (string msg) => this.SaveMessage(msg, LogType.Message));
         }
 
         private void SaveMessage(string message, LogType type)

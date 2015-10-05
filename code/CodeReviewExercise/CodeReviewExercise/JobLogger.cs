@@ -6,18 +6,21 @@
     {
         public LogType LogVerbosity { get; set; }
 
-        public abstract void LogError(string message);
+        public abstract string LogError(string message);
 
-        public abstract void LogWarning(string message);
+        public abstract string LogWarning(string message);
 
-        public abstract void LogMessage(string message);
+        public abstract string LogMessage(string message);
 
-        protected virtual void LogIfCorresponds(string message, LogType type, Action<string> logAction)
+        protected virtual string LogIfCorresponds(string message, LogType type, Action<string> logAction)
         {
-            if (!string.IsNullOrWhiteSpace(message) && this.LogVerbosity >= type)
+            if (string.IsNullOrWhiteSpace(message) || this.LogVerbosity < type)
             {
-                logAction(message.Trim());
+                return null;
             }
+
+            logAction(message.Trim());
+            return message;
         }
     }
 }

@@ -28,10 +28,11 @@
 
             // Act
             var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogWarning(message);
+            var loggedMessage = logger.LogWarning(message);
 
             // Assert
             logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -46,10 +47,11 @@
 
             // Act
             var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogMessage(message);
+            var loggedMessage = logger.LogMessage(message);
 
             // Assert
             logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -64,10 +66,11 @@
 
             // Act
             var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -82,10 +85,11 @@
 
             // Act
             var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogWarning(message);
+            var loggedMessage = logger.LogWarning(message);
 
             // Assert
             logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -100,10 +104,11 @@
 
             // Act
             var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -118,10 +123,11 @@
 
             // Act
             var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -130,14 +136,13 @@
             // Arrange
             const LogType verbosity = LogType.Error;
             const string message = "Test Message";
-            var logsRepositoryMock = new Mock<ILogsRepository>(MockBehavior.Strict);
 
             // Act
-            var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogWarning(message);
+            var logger = new SqlDatabaseLogger(verbosity);
+            var loggedMessage = logger.LogWarning(message);
 
             // Assert
-            logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(null, loggedMessage);
         }
 
         [TestMethod]
@@ -146,14 +151,13 @@
             // Arrange
             const LogType verbosity = LogType.Error;
             const string message = "Test Message";
-            var logsRepositoryMock = new Mock<ILogsRepository>(MockBehavior.Strict);
 
             // Act
-            var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogMessage(message);
+            var logger = new SqlDatabaseLogger(verbosity);
+            var loggedMessage = logger.LogMessage(message);
 
             // Assert
-            logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(null, loggedMessage);
         }
 
         [TestMethod]
@@ -162,14 +166,13 @@
             // Arrange
             const LogType verbosity = LogType.Warning;
             const string message = "Test Message";
-            var logsRepositoryMock = new Mock<ILogsRepository>(MockBehavior.Strict);
 
             // Act
-            var logger = new SqlDatabaseLogger(verbosity, logsRepositoryMock.Object);
-            logger.LogMessage(message);
+            var logger = new SqlDatabaseLogger(verbosity);
+            var loggedMessage = logger.LogMessage(message);
 
             // Assert
-            logsRepositoryMock.VerifyAll();
+            Assert.AreEqual(null, loggedMessage);
         }
     }
 }

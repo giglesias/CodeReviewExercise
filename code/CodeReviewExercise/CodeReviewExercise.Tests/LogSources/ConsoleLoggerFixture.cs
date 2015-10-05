@@ -29,10 +29,11 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity, consoleWrapperMock.Object);
-            logger.LogWarning(message);
+            var loggedMessage = logger.LogWarning(message);
 
             // Assert
             consoleWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -49,10 +50,11 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity, consoleWrapperMock.Object);
-            logger.LogMessage(message);
+            var loggedMessage = logger.LogMessage(message);
 
             // Assert
             consoleWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -69,10 +71,11 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity, consoleWrapperMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             consoleWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -89,10 +92,11 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity, consoleWrapperMock.Object);
-            logger.LogWarning(message);
+            var loggedMessage = logger.LogWarning(message);
 
             // Assert
             consoleWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -109,10 +113,11 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity, consoleWrapperMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             consoleWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -129,10 +134,11 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity, consoleWrapperMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             consoleWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -144,7 +150,10 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity);
-            logger.LogWarning(message);
+            var loggedMessage = logger.LogWarning(message);
+
+            // Assert
+            Assert.AreEqual(null, loggedMessage);
         }
 
         [TestMethod]
@@ -156,7 +165,10 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity);
-            logger.LogMessage(message);
+            var loggedMessage = logger.LogMessage(message);
+
+            // Assert
+            Assert.AreEqual(null, loggedMessage);
         }
 
         [TestMethod]
@@ -168,7 +180,10 @@
 
             // Act
             var logger = new ConsoleLogger(verbosity);
-            logger.LogMessage(message);
+            var loggedMessage = logger.LogMessage(message);
+
+            // Assert
+            Assert.AreEqual(null, loggedMessage);
         }
     }
 }

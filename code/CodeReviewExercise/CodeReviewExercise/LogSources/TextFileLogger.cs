@@ -20,19 +20,19 @@
             this.fileWrapper = fileWrapper;
         }
 
-        public override void LogError(string message)
+        public override string LogError(string message)
         {
-            this.LogIfCorresponds(message, LogType.Error, (string msg) => this.AppendMessage(msg));
+            return this.LogIfCorresponds(message, LogType.Error, (string msg) => this.AppendMessage(msg));
         }
 
-        public override void LogWarning(string message)
+        public override string LogWarning(string message)
         {
-            this.LogIfCorresponds(message, LogType.Warning, (string msg) => this.AppendMessage(msg));
+            return this.LogIfCorresponds(message, LogType.Warning, (string msg) => this.AppendMessage(msg));
         }
 
-        public override void LogMessage(string message)
+        public override string LogMessage(string message)
         {
-            this.LogIfCorresponds(message, LogType.Message, (string msg) => this.AppendMessage(msg));
+            return this.LogIfCorresponds(message, LogType.Message, (string msg) => this.AppendMessage(msg));
         }
 
         private void AppendMessage(string message)

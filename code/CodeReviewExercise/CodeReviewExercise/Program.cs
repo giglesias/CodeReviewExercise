@@ -48,19 +48,20 @@
                 {
                     var logger = Activator.CreateInstance(Type.GetType(LogSourcesMapper.SourceMapping[logSource.Trim()]), logVerbosity) as JobLogger;
 
+                    string loggedMessage;
                     switch (type)
                     {
                         case LogType.Error:
-                            Console.WriteLine("Logging error with message '{0}' and logger '{1}'", message, logSource.Trim());
-                            logger.LogError(message);
+                            loggedMessage = logger.LogError(message);
+                            ShowLoggedMessage(loggedMessage, logSource.Trim());
                             break;
                         case LogType.Warning:
-                            Console.WriteLine("Logging warning with message '{0}' and logger '{1}'", message, logSource.Trim());
-                            logger.LogWarning(message);
+                            loggedMessage = logger.LogWarning(message);
+                            ShowLoggedMessage(loggedMessage, logSource.Trim());
                             break;
                         default:
-                            Console.WriteLine("Logging message '{0}' with logger '{1}'", message, logSource.Trim());
-                            logger.LogMessage(message);
+                            loggedMessage = logger.LogMessage(message);
+                            ShowLoggedMessage(loggedMessage, logSource.Trim());
                             break;
                     }
                 }
@@ -73,6 +74,18 @@
 
             Console.WriteLine("Done!");
             Console.ReadKey();
+        }
+
+        private static void ShowLoggedMessage(string loggedMessage, string logSource)
+        {
+            if (!string.IsNullOrWhiteSpace(loggedMessage))
+            {
+                Console.WriteLine("Logging message '{0}' of type '{1}' with logger '{2}'", loggedMessage, type, logSource);
+            }
+            else
+            {
+                Console.WriteLine("Logger '{0}' didn't log the message as it is empty or the general application's verbosity does not allow it", logSource);
+            }
         }
 
         private static bool ValidateConsoleParameters(string[] args)

@@ -30,10 +30,11 @@
 
             // Act
             var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogWarning(message);
+            var loggedMessage = logger.LogWarning(message);
 
             // Assert
             fileWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -48,10 +49,11 @@
 
             // Act
             var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogMessage(message);
+            var loggedMessage = logger.LogMessage(message);
 
             // Assert
             fileWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -66,10 +68,11 @@
 
             // Act
             var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             fileWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -84,10 +87,11 @@
 
             // Act
             var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogWarning(message);
+            var loggedMessage = logger.LogWarning(message);
 
             // Assert
             fileWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -102,10 +106,11 @@
 
             // Act
             var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             fileWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -120,10 +125,11 @@
 
             // Act
             var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogError(message);
+            var loggedMessage = logger.LogError(message);
 
             // Assert
             fileWrapperMock.VerifyAll();
+            Assert.AreEqual(message, loggedMessage);
         }
 
         [TestMethod]
@@ -132,14 +138,13 @@
             // Arrange
             const LogType verbosity = LogType.Error;
             const string message = "Test Message";
-            var fileWrapperMock = new Mock<IFileWrapper>(MockBehavior.Strict);
 
             // Act
-            var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogWarning(message);
+            var logger = new TextFileLogger(verbosity);
+            var loggedMessage = logger.LogWarning(message);
 
             // Assert
-            fileWrapperMock.VerifyAll();
+            Assert.AreEqual(null, loggedMessage);
         }
 
         [TestMethod]
@@ -148,14 +153,13 @@
             // Arrange
             const LogType verbosity = LogType.Error;
             const string message = "Test Message";
-            var fileWrapperMock = new Mock<IFileWrapper>(MockBehavior.Strict);
 
             // Act
-            var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogMessage(message);
+            var logger = new TextFileLogger(verbosity);
+            var loggedMessage = logger.LogMessage(message);
 
             // Assert
-            fileWrapperMock.VerifyAll();
+            Assert.AreEqual(null, loggedMessage);
         }
 
         [TestMethod]
@@ -164,14 +168,13 @@
             // Arrange
             const LogType verbosity = LogType.Warning;
             const string message = "Test Message";
-            var fileWrapperMock = new Mock<IFileWrapper>(MockBehavior.Strict);
 
             // Act
-            var logger = new TextFileLogger(verbosity, fileWrapperMock.Object);
-            logger.LogMessage(message);
+            var logger = new TextFileLogger(verbosity);
+            var loggedMessage = logger.LogMessage(message);
 
             // Assert
-            fileWrapperMock.VerifyAll();
+            Assert.AreEqual(null, loggedMessage);
         }
     }
 }
