@@ -50,13 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConsoleWrapper.cs" />
+    <Compile Include="Helpers\FileWrapper.cs" />
     <Compile Include="Helpers\IConsoleWrapper.cs" />
+    <Compile Include="Helpers\IFileWrapper.cs" />
     <Compile Include="JobLogger.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="LoggerSources.cs" />
     <Compile Include="LogSourcesMapper.cs" />
     <Compile Include="LogSources\ConsoleLogger.cs" />
     <Compile Include="LogSources\SqlDatabaseLogger.cs" />
+    <Compile Include="LogSources\TextFileLogger.cs" />
     <Compile Include="LogType.cs" />
     <Compile Include="Migrations\201510042354223_InitialCreate.cs" />
     <Compile Include="Migrations\201510042354223_InitialCreate.Designer.cs">
