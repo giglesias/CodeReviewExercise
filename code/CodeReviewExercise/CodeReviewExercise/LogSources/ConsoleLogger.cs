@@ -3,7 +3,7 @@
     using System;
     using CodeReviewExercise.Helpers;
 
-    public class ConsoleLogger : Logger
+    public class ConsoleLogger : JobLogger
     {
         private readonly IConsoleWrapper consoleWrapper;
 

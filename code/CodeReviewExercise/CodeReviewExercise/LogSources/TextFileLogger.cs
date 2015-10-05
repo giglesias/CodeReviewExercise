@@ -5,7 +5,7 @@
     using System.IO;
     using CodeReviewExercise.Helpers;
 
-    public class TextFileLogger : Logger
+    public class TextFileLogger : JobLogger
     {
         private readonly IFileWrapper fileWrapper;
 

@@ -4,7 +4,7 @@
     using CodeReviewExercise.Models;
     using CodeReviewExercise.Repositories;
 
-    public class SqlDatabaseLogger : Logger
+    public class SqlDatabaseLogger : JobLogger
     {
         private readonly ILogsRepository logsRepository;
 

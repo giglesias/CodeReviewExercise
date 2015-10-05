@@ -54,7 +54,6 @@
     <Compile Include="Helpers\IConsoleWrapper.cs" />
     <Compile Include="Helpers\IFileWrapper.cs" />
     <Compile Include="JobLogger.cs" />
-    <Compile Include="Logger.cs" />
     <Compile Include="LoggerSources.cs" />
     <Compile Include="LogSourcesMapper.cs" />
     <Compile Include="LogSources\ConsoleLogger.cs" />

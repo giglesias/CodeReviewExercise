@@ -17,7 +17,7 @@
             {
                 try
                 {
-                    var logger = Activator.CreateInstance(Type.GetType(LogSourcesMapper.SourceMapping[logSource.Trim()]), logVerbosity) as Logger;
+                    var logger = Activator.CreateInstance(Type.GetType(LogSourcesMapper.SourceMapping[logSource.Trim()]), logVerbosity) as JobLogger;
 
                     switch (type)
                     {
