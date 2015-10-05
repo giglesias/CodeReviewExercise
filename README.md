@@ -1,11 +1,11 @@
 # Code Review Exercise #
 
-This repository includes a C# console application that includes the refactor needed to improve a logger implementation code snippet from an exercise, as well as a unit test project with tests for the main business logic. The detailed feedback is included in [this document](./feedback/Feedback.md).
+This repository includes a C# console application that showcases the refactor needed to improve a logger implementation code snippet from an exercise. It also includes a unit test project with tests for the main business logic. The detailed feedback is included in [this document](./feedback/Feedback.md).
 
 
 ### Application configuration ###
 
-Open the App.config file of the CodeReviewExercise project and update the following settings:
+Open the **App.config** file from the CodeReviewExercise project and update the following settings:
 
 **App Settings**
 
@@ -17,7 +17,7 @@ Open the App.config file of the CodeReviewExercise project and update the follow
 
 - **LogDbConnectionString**: the connection string to a database that will be used by the Sql Database logger to store logs.
 
-Below is an example of a configuration that uses all the supported loggers, sets the general application verbosity to _Error_, stores logs in a log file within the _C:\temp_ directory and uses the CodeReviewExercise database:
+Below is an example of a configuration that uses all the supported loggers, sets the general application verbosity to _Error_, stores logs in a log file within the _C:\temp_ directory and uses the _CodeReviewExercise_ database:
 
 ```
 <connectionStrings>
